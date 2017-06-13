@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime');
+const chatServer = require('./lib/chat_server');
+
 const cache = {};
 
 const sever = http.createServer(function(req, res) {
@@ -13,9 +15,11 @@ const sever = http.createServer(function(req, res) {
 		filePath = `public${req.url}`;
 	}
 
-	let absPath = './${filePath}';
+	let absPath = `./${filePath}`;
 	serveStatic(res, cache, absPath);
 });
+
+chatServer.listen(sever);
 
 sever.listen(3000, function() {
 	console.log("server listening on port 3000");

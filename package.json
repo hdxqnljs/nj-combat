@@ -1,9 +1,15 @@
 {
-	"name": "chatrooms",
-	"version": "0.0.1",
-	"description": "an app that can be used for chating",
-	"dependencies": {
-		"socket.io": "~0.9.6",
-		"mime": "~1.2.7"
-	}
+  "name": "chatrooms",
+  "version": "0.0.1",
+  "description": "an app that can be used for chating",
+  "dependencies": {
+    "socket.io": "~0.9.6",
+    "mime": "~1.2.7"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  },
+  "scripts": {
+    "start": "supervisor -w public,lib -i node_modules -e 'html|css|js'  server.js"
+  }
 }
